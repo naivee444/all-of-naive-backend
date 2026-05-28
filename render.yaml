@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: all-of-naive-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: WEBAPP_URL
+        value: https://naivee444.github.io/all-of-naive-miniapp/?api=https%3A%2F%2Fall-of-naive-backend.onrender.com
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:///./data.db
